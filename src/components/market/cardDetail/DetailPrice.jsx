@@ -6,7 +6,7 @@ export default function DetailPrice({ price, children, titletext, pricetext }) {
 
   return (
     <div className={`${flexstanderd} justify-between`}>
-      <span className={`${stitle} ${titletext} text-customGrey01`}>가격</span>
+      <span className={`${stitle} ${titletext} text-customGrey01`}>Price</span>
       <span className={`${pointtext} ${pricetext} text-white`}>
         {price} P
         <span className={`font-normal text-xl text-customGrey01`}>

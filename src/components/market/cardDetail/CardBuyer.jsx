@@ -202,7 +202,7 @@ export default function CardBuyer({ cardDetail, myCardList }) {
       )}
 
       <div className={`${flexstanderd} relative`}>
-        <Title title="교환 희망 정보" className="mt-[120px] w-full">
+        <Title title="Detail" className="mt-[120px] w-full">
           <PrimaryButton
             label="포토카드 교환하기"
             width="440px"

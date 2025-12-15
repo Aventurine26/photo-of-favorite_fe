@@ -12,7 +12,7 @@ export default function DetailRemaining({
 
   return (
     <div className={`${flexstanderd} justify-between`}>
-      <span className={`${stitle} ${titletext} text-customGrey01`}>잔여</span>
+      <span className={`${stitle} ${titletext} text-customGrey01`}>Quantity</span>
       <div>
         <span className={`${pointtext} ${buytext} text-white`}>
           {remainPhoto}

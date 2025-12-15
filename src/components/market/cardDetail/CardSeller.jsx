@@ -57,7 +57,6 @@ function CardSeller({ cardDetail }) {
               totalphoto={cardDetail.totalQuantity}
             />
           </div>
-          {/* 이하 스타일 임의로 인라인 처리 할테니 수정하셈 to수정*/}
           <div
             style={{
               display: 'flex',
@@ -69,7 +68,7 @@ function CardSeller({ cardDetail }) {
           >
             <Image src={'/images/type=exchange.png'} alt={'교환아이콘'} width={28} height={28} />
             <span style={{ fontSize: '28px', fontWeight: '700', marginLeft: '10px' }}>
-              교환 희망 정보
+            Preferred Exchange
             </span>
             {/*  언더바 */}
           </div>
@@ -87,18 +86,18 @@ function CardSeller({ cardDetail }) {
           <p className={`text-white`} style={{ paddingBottom: '50px' }}>
             {cardDetail.description}
           </p>
-          <PrimaryButton
+          {/* <PrimaryButton
             label="수정하기"
             width="w-full"
             height="80px"
             handleClick={() => setOpenModal({ ...openModal, standard: true })}
-          />
-          <SecondaryButton
+          /> */}
+          {/* <SecondaryButton
             label="판매 내리기"
             width="w-full"
             height="80px"
             handleClick={() => setOpenModal({ ...openModal, standard: true })}
-          />
+          /> */}
         </div>
       </div>
       {cardDetail?.exchangesTarget.length > 0 ? (
