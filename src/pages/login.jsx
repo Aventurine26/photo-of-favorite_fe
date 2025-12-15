@@ -30,7 +30,7 @@ export default function Login() {
     // 이메일 유효성 검사
     if (!validateEmail(email)) {
       setEmailError(true);
-      setMessage('올바른 이메일을 입력해 주세요.');
+      setMessage('Please enter a valid email address.');
       return;
     }
 
@@ -40,12 +40,12 @@ export default function Login() {
     try {
       // login 함수 호출
       await login({ email, password }); // AuthProvider에서 제공한 로그인 함수 사용
-      setMessage('로그인 성공! 환영합니다.');
+      setMessage('Login success!');
 
       // 로그인 상태가 업데이트된 뒤 페이지 이동
       router.push('/market');
     } catch (error) {
-      const errorMessage = error.message || '로그인 실패';
+      const errorMessage = error.message || 'Login failed. Please try again.';
       setMessage(errorMessage); // 실패 메시지 설정
     } finally {
       setLoading(false);
@@ -55,6 +55,7 @@ export default function Login() {
   return (
     <div className="mt-4 flex min-h-screen flex-col items-center justify-center bg-black">
       {/* 로고 */}
+    <Link href="/market">
       <Image
         src="/images/main_logo.png"
         alt="최애의포토 로고"
@@ -62,6 +63,7 @@ export default function Login() {
         height={60}
         className="mb-12"
       />
+    </Link>
 
       <form className="flex w-auto flex-col gap-[10px]" onSubmit={handleLogin}>
         {/* 이메일 입력 */}
@@ -74,7 +76,7 @@ export default function Login() {
         {/* 이메일 에러 메시지 */}
         {emailError && (
           <p className="mt-1 text-sm font-light leading-6 text-customRed">
-            올바른 이메일을 입력해 주세요.
+            Please enter a valid email address.
           </p>
         )}
 
@@ -88,7 +90,7 @@ export default function Login() {
 
         {/* 로그인 버튼 */}
         <PrimaryButton
-          label={loading ? '로그인 중...' : '로그인'}
+          label={loading ? 'Loading...' : 'Log In'}
           type="submit"
           textSize="lg"
           width="520px"
@@ -101,9 +103,9 @@ export default function Login() {
 
       {/* 회원가입 링크 */}
       <p className="mt-6 text-center text-base font-normal text-white">
-        최애의 포토가 처음이신가요?{' '}
+        Are you new here?{' '}
         <Link href="/signup" className="text-customMain underline hover:no-underline">
-          회원가입하기
+          Sign Up
         </Link>
       </p>
     </div>

@@ -1,15 +1,15 @@
 export const SORT_OPTS = new Map([
-  ['LATEST', { label: '최신 순', value: 'sortField=createdAt' }],
-  ['OLDEST', { label: '오래된 순', value: 'sortField=createdAt&sortOrder=asc' }],
-  ['HIGHER_PRICE', { label: '높은 가격순', value: 'sortField=price' }],
-  ['LOWER_PRICE', { label: '낮은 가격순', value: 'sortField=price&sortOrder=asc' }],
+  ['LATEST', { label: 'LATEST', value: 'sortField=createdAt' }],
+  ['OLDEST', { label: 'OLDEST', value: 'sortField=createdAt&sortOrder=asc' }],
+  ['HIGHER_PRICE', { label: 'HIGHER PRICE', value: 'sortField=price' }],
+  ['LOWER_PRICE', { label: 'LOWER PRICE', value: 'sortField=price&sortOrder=asc' }],
 ]);
 
 export const FILTER_LIST = new Map([
   [
     'grade',
     {
-      label: '등급',
+      label: 'Grade', 
       value: '',
       options: [
         {
@@ -22,7 +22,7 @@ export const FILTER_LIST = new Map([
         },
         {
           value: 'super-rare',
-          label: 'SUPER_RARE',
+          label: 'SUPER RARE',
         },
         {
           value: 'legendary',
@@ -34,24 +34,24 @@ export const FILTER_LIST = new Map([
   [
     'genre',
     {
-      label: '장르',
+      label: 'Genre',
       value: '',
       options: [
         {
           value: 'travel',
-          label: '여행',
+          label: 'TRAVEL',
         },
         {
           value: 'landscape',
-          label: '풍경',
+          label: 'LANDSCAPE',
         },
         {
           value: 'portrait',
-          label: '인물',
+          label: 'PORTRAIT',
         },
         {
           value: 'object',
-          label: '사물',
+          label: 'OBJECT',
         },
       ],
     },
@@ -59,16 +59,16 @@ export const FILTER_LIST = new Map([
   [
     'status',
     {
-      label: '매진 여부',
+      label: 'Status',
       value: '',
       options: [
         {
           value: 'onSale',
-          label: '판매 중',
+          label: 'ON SALE',
         },
         {
           value: 'soldOut',
-          label: '판매 완료',
+          label: 'SOLD OUT',
         },
       ],
     },

@@ -73,7 +73,7 @@ export default function Header() {
 
             <div className="flex gap-7 text-sm font-normal leading-5 text-gray-400">
               <p>|</p>
-              <button onClick={handleLogOut}>로그아웃</button>
+              <button onClick={handleLogOut}>Log out</button>
             </div>
           </div>
         ) : (
@@ -84,7 +84,7 @@ export default function Header() {
                 router.push('/login');
               }}
             >
-              로그인
+              Log in
             </button>
             <button
               className="hover:text-customMain"
@@ -92,7 +92,7 @@ export default function Header() {
                 router.push('/signup');
               }}
             >
-              회원가입
+              Sign Up
             </button>
           </div>
         )}

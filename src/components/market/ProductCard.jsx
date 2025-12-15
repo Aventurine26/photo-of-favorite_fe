@@ -16,10 +16,10 @@ import {
 import { Separator } from '@/components/ui/separator';
 
 const genreToKr = {
-  TRAVEL: '여행',
-  PORTRAIT: '인물',
-  LANDSCAPE: '풍경',
-  OBJECT: '사물',
+  TRAVEL: 'Travel',
+  PORTRAIT: 'Portrait', 
+  LANDSCAPE: 'Landscape',
+  OBJECT: 'Object',
 };
 
 /**
@@ -78,11 +78,11 @@ export function ProductCard({ cardProps }) {
       <CardContent className="pt-[5px] tb:pt-[10px] tb:text-base">
         <div className="grid grid-flow-col">
           <div className="flex gap-[1ch]">
-            <span aria-label={`상품 등급: ${grade}`} className={GRADE_STYLES[grade]}>
+            <span aria-label={`Grade: ${grade}`} className={GRADE_STYLES[grade]}>
               {grade.replace('_', ' ')}
             </span>
             <Separator orientation="vertical" />
-            <span className="line-clamp-1 font-normal" aria-label={`장르: ${genre}`}>
+            <span className="line-clamp-1 font-normal" aria-label={`Genre: ${genre}`}>
               {genreToKr[genre] || genre}
             </span>
           </div>
@@ -91,11 +91,11 @@ export function ProductCard({ cardProps }) {
         <Separator className="my-2.5 tb:my-5" />
         <ul className="space-y-[5px] *:flex *:justify-between *:tabular-nums tb:space-y-[10px]">
           <li>
-            <span>가격</span>
+            <span>Price</span>
             <span className="font-normal text-white">{price} P</span>
           </li>
           <li>
-            <span>잔여</span>
+            <span>Quantity</span>
             <span>
               <span className="text-white">{remainingQuantity}</span> / {totalQuantity}
             </span>

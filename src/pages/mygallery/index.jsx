@@ -21,10 +21,10 @@ const gradeOptions = [
 
 // 장르 : 여행, 풍경, 인물, 사물
 const genreOptions = [
-  { value: 'TRAVEL', label: '여행' },
-  { value: 'LANDSCAPE', label: '풍경' },
-  { value: 'PORTRAIT', label: '인물' },
-  { value: 'OBJECT', label: '사물' },
+  { value: 'TRAVEL', label: 'TRAVEL' },
+  { value: 'LANDSCAPE', label: 'LANDSCAPE' },
+  { value: 'PORTRAIT', label: 'PORTRAIT' },
+  { value: 'OBJECT', label: 'OBJECT' },
 ];
 
 export default function MyGallery() {
@@ -40,13 +40,9 @@ export default function MyGallery() {
   });
 
   useEffect(() => {
-    if (user?.id) {
-      setParams((prev) => ({ ...prev, ownerId: user.id }));
-      if (process.env.NODE_ENV === 'development') {
-        console.log('MyGallery 현재 params:', params);
-      }
-    }
-  }, [params, user]);
+    if (!user?.id) return;
+    setParams(prev => (prev.ownerId === user.id ? prev : { ...prev, ownerId: user.id }));
+  }, [user?.id]);
 
   const [cards, setCards] = useState([]); // 카드 데이터를 저장
   const [hasNextPage, setHasNextPage] = useState(false); // 다음 페이지 여부 확인
@@ -132,10 +128,10 @@ export default function MyGallery() {
     <div className="min-h-screen bg-[#1a1a1a] p-6">
       {/* 헤더 */}
       <div className="mx-auto flex max-w-7xl items-center justify-between border-b-2 border-gray-200 pb-5">
-        <h1 className="text-4xl font-bold text-white">마이갤러리</h1>
-        <Link href="/makePhotoCard">
+        <h1 className="text-4xl font-bold text-white">My Gallery</h1>
+        <Link href="/makephotocard">
           <div className="flex w-[500px] flex-col gap-5 px-5 py-5">
-            <PrimaryButton label="포토카드 생성하기" width="440px" height="80px" textSize="xl" />
+            <PrimaryButton label="Add new photo card" width="440px" height="80px" textSize="xl" />
           </div>
         </Link>
       </div>
@@ -145,29 +141,29 @@ export default function MyGallery() {
         <p className="text-lg font-bold text-white">
           {/* // {console.log("user:", user)} */}
           {user?.nickName
-            ? `${user.nickName}님이 보유한 포토카드`
+            ? `${user.nickName}'s Photo Cards`
             : '사용자 데이터를 불러오는 중입니다...'}
           {data?.data?.totalCount !== undefined ? (
-            <span className="font-normal text-gray-300">({data.data.totalCount || 0}장)</span>
+            <span className="font-normal text-gray-300">({data.data.totalCount || 0}ea)</span>
           ) : null}
         </p>
         {/* 등급 정보 */}
         <div className="mt-4 flex gap-4">
           <div className="rounded border border-yellow-500 px-4 py-2 text-center text-yellow-500">
             COMMON
-            <span className="ml-2">{data?.data?.countsGroupByGrade?.COMMON || 0} 장</span>
+            <span className="ml-2">{data?.data?.countsGroupByGrade?.COMMON || 0} ea</span>
           </div>
           <div className="rounded border border-blue-500 px-4 py-2 text-center text-blue-500">
             RARE
-            <span className="ml-2">{data?.data?.countsGroupByGrade?.RARE || 0} 장</span>
+            <span className="ml-2">{data?.data?.countsGroupByGrade?.RARE || 0} ea</span>
           </div>
           <div className="rounded border border-purple-500 px-4 py-2 text-center text-purple-500">
             SUPER RARE
-            <span className="ml-2">{data?.data?.countsGroupByGrade?.SUPER_RARE || 0} 장</span>
+            <span className="ml-2">{data?.data?.countsGroupByGrade?.SUPER_RARE || 0} ea</span>
           </div>
           <div className="rounded border border-red-500 px-4 py-2 text-center text-red-500">
             LEGENDARY
-            <span className="ml-2">{data?.data?.countsGroupByGrade?.LEGENDARY || 0} 장</span>
+            <span className="ml-2">{data?.data?.countsGroupByGrade?.LEGENDARY || 0} ea</span>
           </div>
         </div>
       </div>
@@ -175,14 +171,14 @@ export default function MyGallery() {
       {/* 검색 및 필터 */}
       <div className="mx-auto mt-10 flex max-w-7xl gap-6 border-t border-gray-400 pt-5">
         <SearchInput
-          placeholder="검색"
+          placeholder="Search"
           onKeyPress={handleKeyPress}
           onClick={handleClick}
           onChange={handleInputChange}
         />
         <CustomDropDown
           className="rounded border border-gray-300 px-3 py-2"
-          label="등급"
+          label="Grade"
           options={gradeOptions}
           value={params.grade}
           onChange={(value) =>
@@ -194,7 +190,7 @@ export default function MyGallery() {
         />
         <CustomDropDown
           className="rounded border border-gray-300 px-3 py-2"
-          label="장르"
+          label="Genre"
           options={genreOptions}
           value={params.genre} // params에서 선택된 값 가져오기
           onChange={(value) =>

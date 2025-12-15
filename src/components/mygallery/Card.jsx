@@ -53,9 +53,9 @@ export default function Card({ onClick, card, quantity }) {
                 : 'text-white'
           }`}
         >
-          {card.status === 'AVAILABLE' && '판매 중'}
-          {card.status === 'IN_TRADE' && '교환 제시 대기 중'}
-          {card.status === 'SOLD_OUT' && '거래 완료'}
+          {card.status === 'AVAILABLE' && 'Available'}
+          {card.status === 'IN_TRADE' && 'In Trade'}
+          {card.status === 'SOLD_OUT' && 'Sold Out'}
         </div>
       )}
 
@@ -71,13 +71,13 @@ export default function Card({ onClick, card, quantity }) {
 
       {/* 가격 정보 */}
       <div className="mt-5 flex justify-between">
-        <p className="text-gray-300">가격</p>
+        <p className="text-gray-300">Price</p>
         <p className="text-lg font-normal">{card.price} P</p>
       </div>
 
       {/* 수량 정보 */}
       <div className="mt-2 flex justify-between">
-        <p className="text-gray-300">{pathname === '/mygallery' ? '잔여' : '수량'}</p>
+        <p className="text-gray-300">{pathname === '/mygallery' ? 'Quantity' : 'Quantity'}</p>
         <p className="text-lg font-normal">
           {pathname === '/mygallery' ? (
             card.remainingQuantity

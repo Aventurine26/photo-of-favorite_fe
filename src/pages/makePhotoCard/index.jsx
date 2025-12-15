@@ -52,7 +52,7 @@ export default function MakePhotoCard() {
         console.log('API 응답:', response.data);
       }
 
-      router.push('/makePhotoCard/success');
+      router.push('/makephotocard/success');
 
       reset();
     } catch (error) {
@@ -60,7 +60,7 @@ export default function MakePhotoCard() {
         console.error('API 요청 오류:', error);
         console.error('데이터 상태:', formData);
       }
-      router.push('makePhotoCard/failed');
+      router.push('makephotocard/failed');
     }
   };
 
@@ -78,7 +78,7 @@ export default function MakePhotoCard() {
 
   const FILTER_LIST = [
     {
-      label: '등급을 선택해 주세요',
+      label: 'Select Grade',  
       category: 'grade',
       options: [
         { value: 'COMMON', label: 'COMMON' },
@@ -88,13 +88,13 @@ export default function MakePhotoCard() {
       ],
     },
     {
-      label: '장르를 선택해 주세요',
+      label: 'Select Genre',
       category: 'genre',
       options: [
-        { value: 'TRAVEL', label: '여행' },
-        { value: 'LANDSCAPE', label: '풍경' },
-        { value: 'PORTRAIT', label: '인물' },
-        { value: 'OBJECT', label: '사물' },
+        { value: 'TRAVEL', label: 'TRAVEL' },
+        { value: 'LANDSCAPE', label: 'LANDSCAPE' },
+        { value: 'PORTRAIT', label: 'PORTRAIT' },
+        { value: 'OBJECT', label: 'OBJECT' },
       ],
     },
   ];
@@ -108,28 +108,28 @@ export default function MakePhotoCard() {
   return (
     <div className="flex flex-col px-20 py-6 lt:px-55 lt:py-7">
       <h1 className="hidden border-b border-white pb-5 font-baskin font-normal mb:flex mb:text-5xl lt:text-6xl">
-        포토카드 생성
+        Create Photo Card
       </h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-14 flex flex-col items-center gap-14">
         <div className={divStyle}>
-          <label className={labelStyle}>포토카드 이름</label>
+          <label className={labelStyle}>Photo Card's Name</label>
           <Input
             {...register('name', {
-              required: '필수 입력 사항입니다',
+              required: 'This field is required.',
               maxLength: {
                 value: 30,
-                message: '최대 30자까지 입력 가능합니다',
+                message: 'Up to 30 characters are allowed.',
               },
             })}
             className={`${errors.name ? 'border-customRed' : 'border-white'} ${inputStyle}`}
-            placeholder="포토카드 이름을 입력해 주세요"
+            placeholder="Enter your photocard name"
           />
           {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>}
         </div>
 
         <div className={divStyle}>
-          <label className={labelStyle}>등급</label>
+          <label className={labelStyle}>Grade</label>
           <Select key={FILTER_LIST[0].category} onValueChange={(value) => setValue('grade', value)}>
             <SelectTrigger className={drpDownStyle}>
               <SelectValue placeholder={FILTER_LIST[0].label} />
@@ -145,7 +145,7 @@ export default function MakePhotoCard() {
         </div>
 
         <div className={divStyle}>
-          <label className={labelStyle}>장르</label>
+          <label className={labelStyle}>Genre</label>
           <Select key={FILTER_LIST[1].category} onValueChange={(value) => setValue('genre', value)}>
             <SelectTrigger className={drpDownStyle}>
               <SelectValue placeholder={FILTER_LIST[1].label} />
@@ -161,31 +161,31 @@ export default function MakePhotoCard() {
         </div>
 
         <div className={divStyle}>
-          <label className={labelStyle}>가격</label>
+          <label className={labelStyle}>Price</label>
           <Input
-            {...register('price', { required: '필수 입력 사항입니다' })}
+            {...register('price', { required: 'This field is required.' })}
             className={`${inputStyle}`}
-            placeholder="가격을 입력해 주세요"
+            placeholder="Enter the price"
           />
         </div>
 
         <div className={divStyle}>
-          <label className={labelStyle}>총 발행량</label>
+          <label className={labelStyle}>Quantity</label>
           <Input
             {...register('quantity', {
-              required: '필수 입력 사항입니다',
+              required: 'This field is required.',
               maxLength: {
                 value: 30,
-                message: '최대 30자까지 입력 가능합니다',
+                message: 'Up to 30 characters are allowed.',
               },
             })}
             className={`${inputStyle}`}
-            placeholder="총 발행량을 입력해 주세요"
+            placeholder="Enter the total quantity"
           />
         </div>
 
         <div className={divStyle}>
-          <label className={labelStyle}>사진 업로드</label>
+          <label className={labelStyle}>Upload your photo</label>
           <div
             className={`m-0 flex h-[55px] w-[345px] flex-row justify-between p-0 mb:w-[440px] tb:w-[520px]`}
           >
@@ -194,7 +194,7 @@ export default function MakePhotoCard() {
               type="text"
               readOnly
               placeholder="사진 업로드"
-              value={watch('image')?.name || '업로드를 해주세요'}
+              value={watch('image')?.name || 'Photo Upload'}  
               className={`h-[55px] w-[310px] border bg-black focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 mb:w-[310px] tb:w-[390px]`}
             />
             <button
@@ -202,7 +202,7 @@ export default function MakePhotoCard() {
               onClick={() => document.getElementById('file-input').click()}
               className="h-[55px] w-[105px] rounded border border-customMain bg-black px-4 py-2 text-base font-normal text-customMain mb:w-[120px]"
             >
-              파일 선택
+              Upload
             </button>
             <input
               id="file-input"
@@ -216,22 +216,22 @@ export default function MakePhotoCard() {
         </div>
 
         <div className={divStyle}>
-          <label className={labelStyle}>포토카드 설명</label>
+          <label className={labelStyle}>Describe your photo</label>
           <textarea
             {...register('description', {
-              required: '설명을 입력해주세요.',
+              required: 'This field is required.',
               maxLength: {
                 value: 500,
-                message: '설명은 최대 500자까지 작성 가능합니다.',
+                message: 'Up to 500 characters are allowed.',
               },
             })}
-            placeholder="카드 설명을 입력해 주세요"
+            placeholder="Enter the description"
             className="h-[180px] w-[345px] resize-none rounded border border-white bg-black p-2 outline-none mb:w-[440px] tb:w-[520px]"
           />
         </div>
 
         <PrimaryButton
-          label={'생성하기'}
+          label={'Create Photo Card'}
           className={'h-[60px] w-[345px] mb:w-[440px] tb:w-[520px]'}
           type="submit"
         />

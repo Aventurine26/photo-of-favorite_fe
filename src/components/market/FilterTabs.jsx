@@ -35,7 +35,7 @@ function TabContentTable({ options }) {
             <TableCell className={cn('flex-1 pl-8 text-left', GRADE_STYLES[label] || null)}>
               {label.replace('_', ' ')}
             </TableCell>
-            <TableCell className="flex-none pr-8 text-right tabular-nums">- 개</TableCell>
+            <TableCell className="flex-none pr-8 text-right tabular-nums">- ea</TableCell>
           </TableRow>
         ))}
       </TableBody>

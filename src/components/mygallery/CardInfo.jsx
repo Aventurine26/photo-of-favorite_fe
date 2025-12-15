@@ -9,18 +9,18 @@ export default function CardInfo({ style, grade, genre, purchase, price }) {
           ? 'SUPER RARE'
           : grade === 'LEGENDARY'
             ? 'LEGENDARY'
-            : '등급정보없음';
+            : 'ECT';
 
   const genreText =
     genre === 'TRAVEL'
-      ? '여행'
+      ? 'Travel'
       : genre === 'LANDSCAPE'
-        ? '풍경'
+        ? 'Landscape'
         : genre === 'PORTRAIT'
-          ? '인물'
+          ? 'Portrait'
           : genre === 'OBJECT'
-            ? '정물'
-            : '기타';
+            ? 'Object'
+            : 'ECT';
 
   return (
     <div

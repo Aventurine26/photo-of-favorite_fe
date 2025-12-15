@@ -25,12 +25,12 @@ export default function ProfileDropDown({ nickName, points }) {
 
       {isOpen && (
         <div className="absolute m-2 flex flex-col divide-y divide-white border border-white bg-black p-2">
-          <p className={elemStyle}>보유 포인트: {points}P</p>
+          <p className={elemStyle}>Points: {points}P</p>
           <Link href="/mygallery" className={elemStyle}>
-            마이갤러리
+            My Gallery
           </Link>
           <Link href="/mysalescard" className={elemStyle}>
-            나의 판매 포토카드
+            My Sales Card
           </Link>
         </div>
       )}

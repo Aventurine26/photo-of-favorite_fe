@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Input } from '../ui/input';
 
 export default function PasswordInput({
-  label = '비밀번호',
+  label = 'Password',
   value,
   handleChange,
   size,
@@ -25,7 +25,7 @@ export default function PasswordInput({
 
   const borderClass = isError ? 'border-customRed' : 'border-white';
 
-  const name = label === '비밀번호' ? 'password' : 'confirmPassword';
+  const name = label === 'Password' ? 'password' : 'confirmPassword';
 
   return (
     <div className="relative flex flex-col gap-[10px]">
@@ -35,7 +35,7 @@ export default function PasswordInput({
         onChange={handleChange}
         value={value}
         type={passwordVisible ? 'text' : 'password'}
-        placeholder="비밀번호를 입력해 주세요"
+        placeholder="Enter your password"
         className={`border ${borderClass} bg-black focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 ${sizeClass[size]}`}
       />
       {isError && <p className="text-sm font-light leading-6 text-customRed">{errorMessage}</p>}

@@ -19,18 +19,18 @@ export default function NickNameInput({ value, handleChange, size }) {
 
   return (
     <div className="flex flex-col gap-[10px]">
-      <label className="font-normal">닉네임</label>
+      <label className="font-normal">Nickname</label>
       <Input
         name="nickName"
         onChange={handleChange}
         value={value}
         type="text"
-        placeholder="닉네임을 입력해 주세요"
+        placeholder="Enter your nickname"
         className={`border ${borderClass} bg-black focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 ${sizeClass[size]}`}
       />
       {isError ? (
         <p className="text-sm font-light leading-6 text-customRed">
-          닉네임은 최대 10자까지 입력 가능합니다.
+          Nickname must be 10 characters or fewer.
         </p>
       ) : (
         ''

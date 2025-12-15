@@ -1,6 +1,11 @@
 import Image from 'next/image';
-
+import { useRouter } from 'next/router';
 import SecondaryButton from '@/components/shared/SecondaryButton';
+
+const goToMyGallery = () => {
+  const router = useRouter();
+  router.push('/mygallery');
+}
 
 export default function Success() {
   return (
@@ -10,12 +15,13 @@ export default function Success() {
       </button> */}{' '}
       {/* 버튼이 필요한가? */}
       <h1 className="font-baskin text-[46px] font-normal leading-[47px]">
-        포토카드 생성 <span className="text-customMain">성공</span>
+        Make Photo Card <span className="text-customMain">Success</span>
       </h1>
-      <p className="text-xl font-bold leading-7">포토카드 생성에 성공했습니다!</p>
+      <p className="text-xl font-bold leading-7">Success!</p>
       <SecondaryButton
-        label={'마이갤러리에서 확인하기'}
+        label={'Go to My Gallery'}
         className={'h-[60px] w-[440px] border-white'}
+        handleClick={goToMyGallery}
       />
     </div>
   );

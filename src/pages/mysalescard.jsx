@@ -20,22 +20,22 @@ const gradeOptions = [
 
 // 장르 : 여행, 풍경, 인물, 사물
 const genreOptions = [
-  { value: 'TRAVEL', label: '여행' },
-  { value: 'LANDSCAPE', label: '풍경' },
-  { value: 'PORTRAIT', label: '인물' },
-  { value: 'OBJECT', label: '사물' },
+  { value: 'TRAVEL', label: 'TRAVEL' },
+  { value: 'LANDSCAPE', label: 'LANDSCAPE' },
+  { value: 'PORTRAIT', label: 'PORTRAIT' },
+  { value: 'OBJECT', label: 'OBJECT' },
 ];
 
 // 판매방법: 판매 중, 교환 제시 대기 중
 const saleMethodOptions = [
-  { value: 'AVAILABLE', label: '판매 중' },
-  { value: 'IN_TRADE', label: '교환 제시 대기 중' },
+  { value: 'AVAILABLE', label: 'Available' },
+  { value: 'IN_TRADE', label: 'In trade' },
 ];
 
 // 4. 매진여부: 판매 중, 판매 완료
 const selloutOptions = [
-  { value: false, label: '매진 아님' },
-  { value: true, label: '매진됨' },
+  { value: false, label: 'Available' },
+  { value: true, label: 'Sold out' },
 ];
 
 // 정렬 옵션: 최신 순, 오래된 순, 높은 가격순, 낮은 가격순, default - 최신 순
@@ -68,13 +68,16 @@ export default function MySalesCard() {
   });
 
   useEffect(() => {
-    if (user?.id) {
-      setParams((prev) => ({ ...prev, ownerId: user.id }));
-      if (process.env.NODE_ENV === 'development') {
-        console.log('현재 params:', params);
-      }
+    if (!user?.id) return;
+    setParams(prev => (prev.ownerId === user.id ? prev : { ...prev, ownerId: user.id }));
+  }, [user?.id]);
+  
+  // (선택) 로그는 별도 effect로 분리
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('현재 params:', params);
     }
-  }, [user, params]);
+  }, [params]);
 
   const [cards, setCards] = useState([]); // 카드 데이터를 저장
   const [hasNextPage, setHasNextPage] = useState(false); // 다음 페이지 존재 여부
@@ -146,7 +149,7 @@ export default function MySalesCard() {
       <div className="mx-auto mt-6 max-w-7xl">
         {/* 상단 네비게이션 */}
         <div className="flex justify-between border-b-2 border-gray-200 pb-4">
-          <h1 className="text-4xl font-bold">나의 판매 포토카드</h1>
+          <h1 className="text-4xl font-bold">My cards on sales</h1>
         </div>
 
         {/* 로딩 상태 */}
@@ -164,14 +167,14 @@ export default function MySalesCard() {
       <div className="mx-auto mt-6 max-w-7xl">
         {/* 상단 네비게이션 */}
         <div className="flex justify-between border-b-2 border-gray-200 pb-4">
-          <h1 className="text-4xl font-bold">나의 판매 포토카드</h1>
+          <h1 className="text-4xl font-bold">My cards on sales</h1>
         </div>
 
         {/* 등급 정보 */}
         <div className="mt-8">
           <p className="text-xl font-bold">
             {user?.nickName
-              ? `${user.nickName}님이 판매 중인 포토카드`
+              ? `${user.nickName}'s Sales Cards`
               : '사용자 데이터를 불러오는 중입니다...'}
             {data && <span className="text-gray-400"> ({data.data.totalCount})</span>}
           </p>
@@ -179,25 +182,25 @@ export default function MySalesCard() {
             {/* COMMON */}
             <div className="rounded border border-yellow-500 px-4 py-2 text-yellow-500">
               COMMON
-              <span className="ml-2">{data?.data?.countsGroupByGrade?.COMMON || 0} 장</span>
+              <span className="ml-2">{data?.data?.countsGroupByGrade?.COMMON || 0} ea</span>
             </div>
 
             {/* RARE */}
             <div className="rounded border border-blue-500 px-4 py-2 text-blue-500">
               RARE
-              <span className="ml-2">{data?.data?.countsGroupByGrade?.RARE || 0} 장</span>
+              <span className="ml-2">{data?.data?.countsGroupByGrade?.RARE || 0} ea</span>
             </div>
 
             {/* SUPER RARE */}
             <div className="rounded border border-purple-500 px-4 py-2 text-purple-500">
               SUPER RARE
-              <span className="ml-2">{data?.data?.countsGroupByGrade?.SUPER_RARE || 0} 장</span>
+              <span className="ml-2">{data?.data?.countsGroupByGrade?.SUPER_RARE || 0} ea</span>
             </div>
 
             {/* LEGENDARY */}
             <div className="rounded border border-red-500 px-4 py-2 text-red-500">
               LEGENDARY
-              <span className="ml-2">{data?.data?.countsGroupByGrade?.LEGENDARY || 0} 장</span>
+              <span className="ml-2">{data?.data?.countsGroupByGrade?.LEGENDARY || 0} ea</span>
             </div>
           </div>
         </div>
@@ -205,14 +208,14 @@ export default function MySalesCard() {
         {/* 검색 및 필터 */}
         <div className="mt-6 flex items-center gap-6 border-t border-gray-300 pt-6">
           <SearchInput
-            placeholder="검색"
+            placeholder="Search"
             onKeyPress={handleKeyPress}
             onClick={handleClick}
             onChange={handleInputChange}
           />
           <CustomDropDown
             className="rounded border border-gray-300 px-3 py-2"
-            label="등급"
+            label="Grade" 
             options={gradeOptions}
             value={params.grade}
             onChange={(value) =>
@@ -224,7 +227,7 @@ export default function MySalesCard() {
           />
           <CustomDropDown
             className="rounded border border-gray-300 px-3 py-2"
-            label="장르"
+            label="Genre"
             options={genreOptions}
             value={params.genre}
             onChange={(value) =>
@@ -236,7 +239,7 @@ export default function MySalesCard() {
           />
           <CustomDropDown
             className="rounded border border-gray-300 px-3 py-2"
-            label="판매방법"
+            label="Status"
             options={saleMethodOptions}
             value={params.cardStatus}
             onChange={(value) =>
@@ -248,7 +251,7 @@ export default function MySalesCard() {
           />
           <CustomDropDown
             className="rounded border border-gray-300 px-3 py-2"
-            label="매진여부"
+            label="Available"
             options={selloutOptions}
             value={params.sellout}
             onChange={(value) =>

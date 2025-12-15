@@ -45,8 +45,8 @@ export default function SharedTestPage() {
   ];
 
   const saleStatusOptions = [
-    { value: 'selling', label: '판매중' },
-    { value: 'panding', label: '교환 제시 대기 중' },
+    { value: 'selling', label: 'Selling' },
+    { value: 'panding', label: 'Panding' },
   ];
 
   return (

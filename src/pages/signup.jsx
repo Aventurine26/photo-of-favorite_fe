@@ -45,7 +45,7 @@ export default function Signup() {
         nickName,
         password,
       });
-      setResult('회원가입이 완료되었습니다.');
+      setResult('Welcome to Favorite Photo! Your account has been created. Please log in.');  
     } catch (error) {
       const errorMessage = error.response?.data?.message || '회원가입 중 오류가 발생했습니다.';
       setResult(errorMessage);
@@ -75,6 +75,7 @@ export default function Signup() {
   return (
     <div className="mt-4 flex min-h-screen flex-col items-center justify-center bg-black">
       {/* 로고 */}
+      <Link href="/market">
       <Image
         src="/images/main_logo.png"
         alt="최애의포토 로고"
@@ -82,6 +83,7 @@ export default function Signup() {
         height={60}
         className="mb-12"
       />
+      </Link>
 
       <form className="flex w-auto flex-col gap-[10px]" onSubmit={handleSubmit}>
         {/* 이메일 입력 */}
@@ -91,7 +93,7 @@ export default function Signup() {
           handleChange={handleFormData}
           isError={isEmailError}
         />
-        {isEmailError && <p className={errorFontClass}>이메일 형식이 올바르지 않습니다.</p>}
+        {isEmailError && <p className={errorFontClass}>Invalid email format.</p>}
 
         {/* 닉네임 입력 */}
         <NickNameInput size="L" value={formData.nickName} handleChange={handleFormData} />
@@ -102,22 +104,22 @@ export default function Signup() {
           value={formData.password}
           handleChange={handleFormData}
           isError={isPasswordError}
-          errorMessage="비밀번호는 8자 이상이어야 합니다."
+          errorMessage="Password must be at least 8 characters long."
         />
 
         {/* 비밀번호 확인 */}
         <PasswordInput
-          label="비밀번호 확인"
+          label="Confirm Password"
           size="L"
           value={formData.confirmPassword}
           handleChange={handleFormData}
           isError={isConfirmPasswordError}
-          errorMessage="비밀번호가 일치하지 않습니다."
+          errorMessage="Passwords do not match."
         />
 
         {/* 가입하기 버튼 */}
         <PrimaryButton
-          label="가입하기"
+          label="Sign Up"
           type="submit"
           textSize="lg"
           width="520px"
@@ -128,9 +130,9 @@ export default function Signup() {
 
       {/* 로그인 안내문 */}
       <p className="mt-6 text-center text-base font-normal text-white">
-        이미 최애의포토 회원이신가요?{' '}
+        Already a member of My Favorite Photo?{' '}
         <Link href="/login" className="text-customMain underline hover:no-underline">
-          로그인하기
+          Log In
         </Link>
       </p>
 

@@ -27,8 +27,8 @@ export default function PageHeader({
     <section>
       <div className="hidden py-10 tb:block lt:py-[60px]">
         <div className="flex justify-between border-b-2 border-gray-100 pb-5">
-          <h1 className="font-baskin text-5xl lt:text-[62px]">마켓플레이스</h1>
-          <SellPhotoCardButton />
+          <h1 className="font-baskin text-5xl lt:text-[62px]">MARKET</h1>
+          {/* <SellPhotoCardButton /> */}
         </div>
         <div className="grid grid-flow-col gap-1 py-5">
           <div className="grid grid-flow-col gap-1">

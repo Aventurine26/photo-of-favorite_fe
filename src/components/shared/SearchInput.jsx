@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 export default function SearchInput({
-  placeholder = '검색', // 기본 placeholder
+  placeholder = 'Search', // 기본 placeholder
   onKeyPress = () => {}, // 기본 Enter 키 핸들러 (빈 함수)
   onChange = () => {}, // 기본 입력값 변경 핸들러 (빈 함수)
   onClick = () => {}, // 기본 클릭 핸들러 (빈 함수),

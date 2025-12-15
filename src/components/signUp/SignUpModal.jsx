@@ -6,7 +6,7 @@ export default function SignUpModal({ children, handleClick }) {
       <div className="flex h-[220px] w-[400px] flex-col items-center justify-center gap-10 rounded-lg border border-white bg-black text-lg text-customMain">
         {children}
         <PrimaryButton
-          label="닫기"
+          label="Close" 
           width="200px"
           height="40px"
           textSize="base"

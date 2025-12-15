@@ -31,7 +31,7 @@ export default function GradeCard({
       style={{ width: 'fit-content' }}
     >
       <div className={textColor[grade]}>{formattedGrade.toUpperCase()}</div>
-      <div className={textColor[grade]}>{amount}장</div>
+      <div className={textColor[grade]}>{amount}ea</div>
     </div>
   );
 }

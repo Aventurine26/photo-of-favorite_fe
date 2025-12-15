@@ -26,7 +26,7 @@ export function BottomSheet() {
         </SheetTrigger>
         <SheetContent side="bottom" className="min-w-[375px] rounded-t-[20px] border-none px-0">
           <SheetHeader>
-            <SheetTitle className="text-center">필터</SheetTitle>
+            <SheetTitle className="text-center">Filter</SheetTitle>
             <SheetDescription aria-describedby={undefined}></SheetDescription>
             <FilterTabs />
           </SheetHeader>

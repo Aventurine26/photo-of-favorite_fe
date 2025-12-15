@@ -8,7 +8,7 @@ export function PageResetButton() {
   const router = useRouter();
   return (
     <Button variant="link" onClick={() => router.reload()} aria-label="검색 조건 초기화">
-      검색 초기화
+      Reset search
     </Button>
   );
 }

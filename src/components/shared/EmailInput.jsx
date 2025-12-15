@@ -11,13 +11,13 @@ export default function EmailInput({ value, handleChange, size, isError }) {
 
   return (
     <div className="flex flex-col gap-[10px]">
-      <label className="font-normal">이메일</label>
+      <label className="font-normal">Email</label>
       <Input
         name="email"
         onChange={handleChange}
         value={value}
         type="email"
-        placeholder="이메일을 입력해 주세요"
+        placeholder="Enter your email"
         className={`border ${borderClass} bg-black focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 ${sizeClass[size]}`}
       />
     </div>
