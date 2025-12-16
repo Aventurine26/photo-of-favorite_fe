@@ -113,7 +113,7 @@ export default function MakePhotoCard() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-14 flex flex-col items-center gap-14">
         <div className={divStyle}>
-          <label className={labelStyle}>Photo Card's Name</label>
+          <label className={labelStyle}>Name of Card</label>
           <Input
             {...register('name', {
               required: 'This field is required.',
